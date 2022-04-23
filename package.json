@@ -2,7 +2,7 @@
   "name": "myownflashcards",
   "version": "1.0.0",
   "description": "Treehouse express course",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "fctest"
   },
@@ -13,6 +13,7 @@
   "author": "Maximilian L S",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "pug": "^3.0.2"
   }
 }

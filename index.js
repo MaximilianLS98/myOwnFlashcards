@@ -9,22 +9,25 @@ app.use(cookieParser());
 
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
-    res.render('index');
+const mainRoutes = require('./routes')
+const cardRoutes = require('./routes/cards')
+
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
+
+/*app.use((req, res, next) =>{
+    const err = new Error('not found');
+    err.status = 404;
+    next();
 });
 
-app.get('/cards', (req, res) => {
-    res.render('card', { prompt: `Who is buried in Grant's tomb?`, hint: `Think about whos name is on the tomb!`});
-});
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error');
+});*/
 
-app.get('/hello', (req, res) => {
-    res.render('hello', { userName: req.cookies.userName});
-});
-app.post('/hello', (req, res) => {
-    res.cookie('userName', req.body.userName);
-    res.render('hello', {userName:req.body.userName});
-});
-
-app.listen(3000, function() {
+app.listen(3000, () => {
     console.log('Server is now running on port: 3000 at localhost');
 });
+

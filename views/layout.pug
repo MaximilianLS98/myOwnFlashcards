@@ -3,6 +3,9 @@ html(lang="en")
     head
         title Flash Cards
     body
-        include includes/header.pug 
+        include includes/header.pug
+        h2 Welcome, #{userName}!
+        form(action='/goodbye', method='post')
+            button(type='submit') Reset Cookies 
         block content 
         include includes/footer.pug
